@@ -19,9 +19,14 @@ from django.urls import path
 from mainapp import views as mainviews
 
 urlpatterns = [
-    path('', mainviews.main),
-    path('products/', mainviews.products),
-    path('contact/', mainviews.contact),
-    path('admin/', admin.site.urls),
+    path('', mainviews.main, name = 'main'),
+    path('products/', mainviews.products, name = 'products'),
+    path('products/all_product', mainviews.products, name = 'all_product'),
+    path('products/home_product', mainviews.products, name = 'home_product'),
+    path('products/modern_product', mainviews.products, name = 'modern_product'),
+    path('products/office_product', mainviews.products, name = 'office_product'),
+    path('products/classic_product', mainviews.products, name = 'classic_product'),
+    path('contact/', mainviews.contact, name = 'contact'),
+    path('admin/', admin.site.urls, name = 'admin'),
 ]
 

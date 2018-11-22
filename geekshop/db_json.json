@@ -1,0 +1,26 @@
+[
+  {
+    "menu": [
+      {"href": "main", "name": "домой"},
+      {"href": "products", "name": "продукты"},
+      {"href": "contact", "name": "контакты"}
+    ]
+  },
+  {
+    "product_menu": [
+      {"href":"all_product", "name": "все"},
+      {"href":"home_product", "name": "дом"},
+      {"href":"office_product", "name": "офис"},
+      {"href":"modern_product", "name": "модерн"},
+      {"href":"classic_product", "name": "классика"}
+    ]
+  },
+  {
+    "title": [
+      {"href": "main","name": "ГЛАВНАЯ"},
+      {"href": "products","name": "ПРОДУКТЫ"},
+      {"href": "contact", "name": "Контакты"}
+    ]
+  }
+]
+
