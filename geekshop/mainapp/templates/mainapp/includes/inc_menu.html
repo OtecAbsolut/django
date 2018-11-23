@@ -1,0 +1,15 @@
+<div class="header clearfix">
+    <a href="/" class="logo"></a>
+    <ul class="menu">
+        <li id="date">{% now "d.M.Y" %}</li>
+        {% for m in menu %}
+        <li>
+            <a href= "{% url m.href %}" class= "{% if request.resolver_match.url_name == m.href %} active {% endif %}">
+                {{m.name}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="#" class="search"></a>
+    <a href="#" class="basket"></a>
+</div>
