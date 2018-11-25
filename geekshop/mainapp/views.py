@@ -30,19 +30,16 @@ def search_content(db):
 
 # Create your views here.
 def main(request):
-    title = 'ГЛАВНАЯ'
     db = json_base()
     content = search_content(db)
     return render(request, 'mainapp/index.html', content)
 
 def products(request):
-    title = 'ПРОДУКТЫ'
     db = json_base()
     content = search_content(db)
     return render(request, 'mainapp/products.html', content)
 
 def contact(request):
-    title = 'КОНТАКТЫ'
     db = json_base()
     content = search_content(db)
     return render(request, 'mainapp/contact.html', content)
