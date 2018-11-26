@@ -35,7 +35,7 @@ def products(request, pk = None):
     title = 'ПРОДУКТЫ'
     menu = search_content()
     category = ProductCategory.objects.all()
-    products = Product.objects.all()
+    products = Product.objects.all()[4:]
     content = {
         'menu': menu,
         'title': title,
