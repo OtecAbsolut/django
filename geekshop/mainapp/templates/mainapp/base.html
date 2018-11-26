@@ -4,11 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>
-        {% for t in title %}
-            {% if request.resolver_match.url_name == t.href %}
-            {{t.name}}
-            {% endif %}
-        {% endfor %}
+        {{title}}
     </title>
 	<link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
 	<link rel="stylesheet" href="{% static '/fonts/font-awesome/css/font-awesome.css' %}">
