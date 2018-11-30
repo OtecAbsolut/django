@@ -14,13 +14,6 @@
       {"href":"modern_product", "name": "модерн"},
       {"href":"classic_product", "name": "классика"}
     ]
-  },
-  {
-    "title": [
-      {"href": "main","name": "ГЛАВНАЯ"},
-      {"href": "products","name": "ПРОДУКТЫ"},
-      {"href": "contact", "name": "Контакты"}
-    ]
   }
 ]
 
