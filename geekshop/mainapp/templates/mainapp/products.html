@@ -26,21 +26,21 @@
 			<div class="details-products">
 				<div class="details-slider">
 					<div class="slider-product">
-						<img src="{% static '/img/slider1.jpg' %}">
+						<img src="/media/{{rand.image570}}">
 					</div>
 					<div class="slider-control">
 						<div class="block">
-							<a href="#"><img src="{% static '/img/controll.jpg' %}" alt="">
+							<a href="#"><img src="/media/{{rand.image70}}" alt="">
 								<div class="text"></div>
 							</a>
 						</div>
 						<div class="block">
-							<a href="#"><img src="{% static '/img/controll1.jpg' %}" alt="">
+							<a href="#"><img src="/media/{{rand.image70_2}}" alt="">
 								<div class="text"></div>
 							</a>
 						</div>
 						<div class="block">
-							<a href="#"><img src="{% static '/img/controll2.jpg' %}" alt="">
+							<a href="#"><img src="/media/{{rand.image70_3}}" alt="">
 								<div class="text"></div>
 							</a>
 						</div>
@@ -48,9 +48,9 @@
 				</div>
 
 				<div class="description">
-					<h3 class="big-bold">Отличный стул</h3>
+					<h3 class="big-bold">{{rand.name}}</h3>
 					<h3 class="red">горячее предложение</h3>
-					<p class="price"> 2585.9 <span>руб</span></p>
+					<p class="price"> {{rand.price}} <span>руб</span></p>
 					<a href="#" class="red-button">
 						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
 					</a>
@@ -73,12 +73,12 @@
 				<div class="related-products clearfix">
 					{% for product in products %}
 						<div class="block">
-							<a href="#"><img src="/media/{{product.image}}" alt="{{product.short_desc}}">
+							<a href="#"><img src="/media/{{product.image370}}" alt="{{product.short_desc}}">
 								<div class="text">
 									<img src="{% static '/img/icon-hover.png' %}" alt="img">
 									<h3>{{product.category.name}}</h3>
 									<h4>{{product.name|title}}</h4>
-									<p>{{product.description|title}} </p>
+									<p>{{product.description}} </p>
 								</div>
 							</a>
 						</div>

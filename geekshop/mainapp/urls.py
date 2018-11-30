@@ -1,9 +1,11 @@
 from django.conf.urls import url
 import mainapp.views as mainapp
+from django.urls import path
+
 
 app_name = 'mainapp'
 
 urlpatterns = [
-    url('', mainapp.products, name='index'),
-    url(r'^(\d+)/', mainapp.products, name = 'category'),
+    path('', mainapp.products, name='index'),
+    path('<int:pk>/', mainapp.products, name = 'category'),
 ]

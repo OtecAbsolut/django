@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import json
 import os
+import random
 from .models import ProductCategory, Product
 #
 # # подгружаем данные из json объекта
@@ -35,12 +36,15 @@ def products(request, pk = None):
     title = 'ПРОДУКТЫ'
     menu = search_content()
     category = ProductCategory.objects.all()
-    products = Product.objects.all()[4:]
+    products = Product.objects.all()
+    r = random.randint(0, 3)
+    rand = Product.objects.all()[r]
     content = {
         'menu': menu,
         'title': title,
         'products': products,
-        'category': category
+        'category': category,
+        'rand': rand
     }
     return render(request, 'mainapp/products.html', content)
 

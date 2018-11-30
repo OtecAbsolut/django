@@ -1,33 +1,18 @@
-from django.test import TestCase
-import json
+from django.core.management.base import BaseCommand
+from mainapp.models import ProductCategory, Product
+from django.contrib.auth.models import User
+
 import os
 import openpyxl
-# Create your tests here.
 
-# # подгружаем данные из json объекта
-# file = open('db_json.json', encoding='utf-8')
-# db_json = json.load(file)
-# file.close()
-#
-# # Ищем в словаре данные для menu, product_menu и.т.д.
-# for element in db_json:
-#     for key, value in element.items():
-#         if key == 'menu':
-#             menu = value
-#         if  key == 'product_menu':
-#             product_menu = value
-#
-# content = {
-#         'menu': menu,
-#         'product_menu': product_menu,
-# }
+EXEL_PATH = 'mainapp/exel'
+FILE_NAME = 'exel_load.xlsx'
 
 # Подгрузка базы из exel
-FILE_NAME = '/home/novozhilovsv/PROJECT/Учебные материалы/Django/Less4/Данные /готовые фото/exel_load.xlsx'
-
 #  функция загркузки продуктов xlsx файла
 def load_products_xlsx(file):
-    wb = openpyxl.load_workbook(file)
+    full_path = os.path.join(EXEL_PATH, file)
+    wb = openpyxl.load_workbook(full_path)
     sheet = wb['products']
     return sheet
 
@@ -50,6 +35,7 @@ def cell_coint(sheet):
             i = i-1
             return i, j
 
+# функция создания списка словарей с данными
 def create_db(sheet, i, j):
     products_all = []
     product = []
@@ -66,12 +52,21 @@ def create_db(sheet, i, j):
             new_db.append(dictionary)
     return new_db
 
-xlsx = load_products_xlsx(FILE_NAME)
-i, j = cell_coint(xlsx)
-new_db = create_db(xlsx, i, j)
 
+class Command(BaseCommand):
 
-print(new_db)
+    def handle(self, *args, **options):
+        xlsx = load_products_xlsx(FILE_NAME)
+        i, j = cell_coint(xlsx)
+        new_db = create_db(xlsx, i, j)
+        Product.objects.all().delete()
 
+        for new in new_db:
+            category_name = new['category']
+            _c = ProductCategory.objects.get(name=category_name)
+            new['category'] = _c
+            new_product = Product(**new)
+            new_product.save()
 
+    super_user = User.objects.create_superuser('django', 'django@mail.ru', '123456')
 
